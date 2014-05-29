@@ -15,7 +15,6 @@
       "cjsxify",
       "hbsfy"
     ],
-    "extensions": [".cjsx"],
     "debug": true
   },
   "browserify-shim": {
