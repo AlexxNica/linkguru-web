@@ -41,7 +41,8 @@
   "dependencies": {
     "react": "^0.10.0",
     "coffee-react": "*",
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "superagent-promise": "*"
   },
   "scripts": {
     "test": "jest"
