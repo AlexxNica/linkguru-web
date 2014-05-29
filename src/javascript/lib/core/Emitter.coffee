@@ -1,4 +1,4 @@
-Emitter =
+class Emitter
   allListeners: ->
     @listeners = []  unless @listeners
     @listeners
