@@ -1,5 +1,6 @@
 class Dispatcher
-  @callbacks = []
+  constructor: ->
+    @callbacks = []
 
   getCallbacks: (action) ->
     @callbacks.filter((defn) ->
@@ -8,7 +9,7 @@ class Dispatcher
       defn.callback
 
   dispatch: (action) ->
-    args = Array.from(arguments_).slice(1)
+    args =  Array.prototype.slice.call(arguments)
     Promise.all @getCallbacks(action).map((callback) ->
       callback.apply callback, args
     )

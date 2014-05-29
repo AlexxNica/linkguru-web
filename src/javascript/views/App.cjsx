@@ -1,7 +1,6 @@
-# @cjsx React.DOM
 React = require 'react'
 
-CheckboxWithLabel = React.createClass
+AppView = React.createClass
   getInitialState: ->
     isChecked: false
   onChange: ->
@@ -12,4 +11,4 @@ CheckboxWithLabel = React.createClass
       {if @state.isChecked then @props.labelOn else @props.labelOff}
     </label>
 
-module.exports = CheckboxWithLabel
+module.exports = AppView
