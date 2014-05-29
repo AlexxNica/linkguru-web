@@ -1,15 +1,11 @@
-(->
-  "use strict"
-  module.exports = (store) ->
-    Proxy = ->
-      @listeners = store.allListeners()
-      return
+Emitter = require("./Emitter")
 
-    Proxy:: = Object.assign(
-      get: (key) ->
-        store.get key
-    , require("./Emitter"))
-    new Proxy()
+class Proxy extends Emitter
+  constructor: (store) ->
+    @store = store
+    @listeners = @store.allListeners()
+  get: (key) ->
+    @store.get key
 
-  return
-).call this
+module.exports = (store) ->
+  new Proxy(store)
