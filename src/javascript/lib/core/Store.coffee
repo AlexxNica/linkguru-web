@@ -1,7 +1,7 @@
 Emitter = require("./Emitter")
 
 class Store extends Emitter
-  @data: {}
+  data: {}
 
   has: (key) ->
     @data.hasOwnProperty key
