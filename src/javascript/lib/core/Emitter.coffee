@@ -11,7 +11,7 @@ class Emitter
       defn.type is type
 
   emit: (type) ->
-    args = Array.from(arguments_).slice(1)
+    args = Array.prototype.slice.call(arguments, 1)
     @getListeners(type).forEach (defn) ->
       defn.callback.apply defn.context or defn.callback, args
 
@@ -24,7 +24,7 @@ class Emitter
   once: (type, callback, context) ->
     self = this
     wrap = wrap = ->
-      callback.apply this, arguments_
+      callback.apply this, arguments
       self.off type, wrap
     @on type, wrap, context
 
