@@ -1,9 +1,11 @@
 # @cjsx React.DOM
 Fluxxor = require 'fluxxor'
-# CheckboxWithLabel = require './checkboxWithLabel'
+React = require 'React'
 
-# React.renderComponent <CheckboxWithLabel labelOn="On" labelOff="Off" />, document.getElementById('app')
-AppDispatcher = require './dispatchers/App'
+actions = require './actions'
+stores = require './stores'
+App = require './views/app'
 
-AppDispatcher.dispatch 'initialize'
-# window.flux = flux
+flux = new Fluxxor.Flux(stores, actions)
+
+React.renderComponent(<App flux={flux} />, document.getElementById("app"))

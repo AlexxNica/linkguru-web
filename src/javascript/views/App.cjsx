@@ -1,14 +1,53 @@
-React = require 'react'
+# @cjsx React.DOM
+React = require 'React'
+Fluxxor = require 'fluxxor'
 
-AppView = React.createClass
+FluxMixin = Fluxxor.FluxMixin(React)
+StoreWatchMixin = Fluxxor.StoreWatchMixin
+
+TodoItem = require './todoItem'
+
+App = React.createClass(
+  mixins: [FluxMixin, StoreWatchMixin("TodoStore")]
+
   getInitialState: ->
-    isChecked: false
-  onChange: ->
-    @setState isChecked: not @state.isChecked
-  render: ->
-    <label>
-      <input type="checkbox" checked={@state.isChecked} onChange={@onChange} />
-      {if @state.isChecked then @props.labelOn else @props.labelOff}
-    </label>
+    return { newTodoText: "" };
 
-module.exports = AppView
+  getStateFromFlux: ->
+    flux = @getFlux();
+    return flux.store("TodoStore").getState();
+
+  render: ->
+    return (
+      <div>
+        <ul>
+          { @state.todos.map((todo, i) ->
+            return <li key={i}><TodoItem todo={todo} /></li>;
+          )}
+        </ul>
+        <form onSubmit={ @onSubmitForm}>
+          <input type="text"
+                 size="30"
+                 placeholder="New Todo"
+                 value={ @state.newTodoText}
+                 onChange={ @handleTodoTextChange} />
+          <input type="submit" value="Add Todo" />
+        </form>
+        <button onClick={ @clearCompletedTodos}>Clear Completed</button>
+      </div>
+    )
+
+  handleTodoTextChange: (e) ->
+    @setState({newTodoText: e.target.value})
+
+  onSubmitForm: (e) ->
+    e.preventDefault()
+    if (@state.newTodoText.trim())
+      @getFlux().actions.addTodo(@state.newTodoText)
+      @setState({newTodoText: ""})
+
+  clearCompletedTodos: (e) ->
+    @getFlux().actions.clearTodos()
+)
+
+module.exports = App
