@@ -3,14 +3,17 @@ Const = require("../constants")
 
 LinksStore = Fluxxor.createStore
   initialize: (options) ->
-    @links = [{url: 'http://www.google.com#q=test1', created_at: 'created_at', score: 1, upVoted: true, downVoted: false},
-              {url: 'http://www.google.com#q=test2', created_at: 'created_at2', score: 5, upVoted: false, downVoted: true},
-              {url: 'http://www.google.com#q=test3', created_at: 'created_at2', score: 5}]
+    @links =  [{url: 'testurl.com', created_at: 'created_at', score: 1}, {url: 'testurl2.com', created_at: 'created_at2', score: 5}]
+    @loading = false
+    @error = null
 
     @bindActions(
       Const.LINKS_UP_VOTE, @onUpVoteLink,
       Const.LINKS_DOWN_VOTE, @onDownVoteLink,
-      Const.LINKS_ADD, @onLinkAdd
+      Const.LINKS_ADD, @onLinkAdd,
+      Const.LOAD_LINKS, @onLoadLinks,
+      Const.LOAD_LINKS_SUCCESS, @onLoadLinksSuccess,
+      Const.LOAD_LINKS_FAIL, @onLoadLinksFail
     )
 
   onUpVoteLink: (link) ->
@@ -28,7 +31,7 @@ LinksStore = Fluxxor.createStore
     @emit("change")
 
   getState: ->
-    collection: @links
+    { loading: @loading, error: @error, collection: @links }
 
   onLinkAdd: (payload)->
     @links.push
@@ -36,5 +39,20 @@ LinksStore = Fluxxor.createStore
       created_at: Date()
       score: 0
 
+  onLoadLinks: ->
+    @loading = true
+    @links = []
+    @error = null
+    @emit 'change'
+
+  onLoadLinksSuccess: (links)->
+    @loading = false
+    @links = links
+    @emit 'change'
+
+  onLoadLinksFail: (payload)->
+    @loading = false
+    @error = payload.error
+    @emit 'change'
 
 module.exports = LinksStore

@@ -18,6 +18,9 @@ LinksComponent = React.createClass
     flux = @getFlux()
     links: flux.store("LinksStore").getState()
 
+  componentDidMount: ->
+    @getFlux().actions.links.load()
+
   render: ->
     <section className="application-container">
       <div>
