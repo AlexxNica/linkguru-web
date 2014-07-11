@@ -38,6 +38,7 @@ LinksStore = Fluxxor.createStore
       url: payload.url
       created_at: Date()
       score: 0
+      description: ""
 
   onLoadLinks: ->
     @loading = true

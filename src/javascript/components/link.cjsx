@@ -14,14 +14,19 @@ LinkComponet = React.createClass
 
   render: ->
     <tr>
-      <td className='url col-xs-9'>
-        <a href={"#{@props.link.url}"}>{"#{@props.link.url}"}</a>
-      </td>
-      <td className='col-xs-3 btn-group'>
-        <span className='label label-info inline pull-left label-big'>{"#{@props.link.score}"}</span>
-        <button className='btn btn-sm btn-success' onClick={@onUpVote} disabled={@props.link.upVoted}>Up!</button>
-        <button className='btn btn-sm btn-danger' onClick={@onDownVote} disabled={@props.link.downVoted}>Down!</button>
-      </td>
+      <div clasName='row'>
+        <td className='url col-xs-4'>
+          <a href={"#{@props.link.url}"}>{"#{@props.link.url}"}</a>
+        </td>
+        <td className='description col-xs-5'>
+          <p>{"#{@props.link.description}"}</p>
+        </td>
+        <td className='col-xs-3 btn-group'>
+          <span className='label label-info inline pull-left label-big'>{"#{@props.link.score}"}</span>
+          <button className='btn btn-sm btn-success' onClick={@onUpVote} disabled={@props.link.upVoted}>Up!</button>
+          <button className='btn btn-sm btn-danger' onClick={@onDownVote} disabled={@props.link.downVoted}>Down!</button>
+        </td>
+      </div>
     </tr>
 
   onUpVote: (e) ->

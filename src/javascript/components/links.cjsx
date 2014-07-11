@@ -27,6 +27,7 @@ LinksComponent = React.createClass
         <table className="table">
           <tr>
             <td>Link</td>
+            <td>Description</td>
             <td>Vote!</td>
 
           </tr>
