@@ -1,9 +1,11 @@
 Fluxxor = require("fluxxor")
 Const = require("../constants")
+_ = require("Underscore")
 
 LinksStore = Fluxxor.createStore
   initialize: (options) ->
     @links =  []
+    @searchResult = null
     @loading = false
     @error = null
 
@@ -14,7 +16,19 @@ LinksStore = Fluxxor.createStore
       Const.LOAD_LINKS, @onLoadLinks,
       Const.LOAD_LINKS_SUCCESS, @onLoadLinksSuccess,
       Const.LOAD_LINKS_FAIL, @onLoadLinksFail
+      Const.SEARCH_LINK, @onSearchLink
     )
+
+  getLinks: ->
+    @searchResult || @links
+
+  onSearchLink: (query) ->
+    if query
+      @searchResult = _.filter @links, (link) ->
+        link.url.indexOf(query) != -1
+    else
+      @searchResult = null
+    @emit("change")
 
   onUpVoteLink: (link) ->
     return true if link.upVoted
@@ -31,7 +45,7 @@ LinksStore = Fluxxor.createStore
     @emit("change")
 
   getState: ->
-    { loading: @loading, error: @error, collection: @links }
+    { loading: @loading, error: @error, collection: @getLinks() }
 
   onLinkAdd: (payload)->
     @links.push

@@ -13,3 +13,5 @@ module.exports =
       apiHost = 'http://localhost:3000/'
       $.getJSON apiHost + 'links.json', (result)=>
         @dispatch Const.LOAD_LINKS_SUCCESS, result.links
+    search: (query) ->
+      @dispatch Const.SEARCH_LINK, query
