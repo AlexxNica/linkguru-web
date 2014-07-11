@@ -6,8 +6,13 @@ LinksStore = Fluxxor.createStore
     @links = [{url: 'testurl.com', created_at: 'created_at', score: 1}, {url: 'testurl2.com', created_at: 'created_at2', score: 5}]
 
     @bindAction(
+      Const.LINKS_UP_VOTE, @onUpVoteLink,
       Const.LINKS_ADD, @onLinkAdd
     )
+
+  onUpVoteLink: (link) ->
+    link.score += 1
+    @emit("change")
 
   getState: ->
     collection: @links

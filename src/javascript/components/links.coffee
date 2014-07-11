@@ -10,6 +10,10 @@ LinkComponent = require './link'
 LinksComponent = React.createClass
   mixins: [FluxChildMixin, StoreWatchMixin("LinksStore")]
 
+
+  getInitialState: ->
+    newLinkUrl: ""
+
   getStateFromFlux: ->
     flux = @getFlux()
     links: flux.store("LinksStore").getState()

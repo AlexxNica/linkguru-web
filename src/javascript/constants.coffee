@@ -1,2 +1,3 @@
 module.exports =
+  LINKS_UP_VOTE: "LINKS_UP_VOTE"
   LINKS_ADD: "LINKS_ADD"
