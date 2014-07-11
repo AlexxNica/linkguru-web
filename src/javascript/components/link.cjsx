@@ -17,10 +17,10 @@ LinkComponet = React.createClass
       <td className='url col-xs-9'>
         <a href={"#{@props.link.url}"}>{"#{@props.link.url}"}</a>
       </td>
-      <td className='col-xs-3'>
-        <div className='badge'>{"#{@props.link.score}"}</div>
-        <button className='badge badge-success' onClick={@onUpVote} disabled={@props.link.upVoted}>Up!</button>
-        <button className='badge badge-warning' onClick={@onDownVote} disabled={@props.link.downVoted}>Down!</button>
+      <td className='col-xs-3 btn-group'>
+        <span className='label label-info inline pull-left label-big'>{"#{@props.link.score}"}</span>
+        <button className='btn btn-sm btn-success' onClick={@onUpVote} disabled={@props.link.upVoted}>Up!</button>
+        <button className='btn btn-sm btn-danger' onClick={@onDownVote} disabled={@props.link.downVoted}>Down!</button>
       </td>
     </tr>
 
