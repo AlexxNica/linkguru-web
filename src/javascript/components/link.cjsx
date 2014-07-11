@@ -15,7 +15,7 @@ LinkComponet = React.createClass
   render: ->
     <tr>
       <td className='url col-xs-9'>
-        <a href={"http://#{@props.link.url}"}>{"#{@props.link.url}"}</a>
+        <a href={"#{@props.link.url}"}>{"#{@props.link.url}"}</a>
       </td>
       <td className='col-xs-3'>
         <div className='badge'>{"#{@props.link.score}"}</div>
