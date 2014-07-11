@@ -28,11 +28,14 @@ LinksComponent = React.createClass
           <tr>
             <td>Link</td>
             <td>Vote!</td>
+
           </tr>
-          {
-            @state.links.collection.map (link, i) ->
-              <LinkComponent link={link}/>
-          }
+          <tbody>
+            {
+              @state.links.collection.map (link, i) ->
+                <LinkComponent key=i link={link}/>
+            }
+          </tbody>
         </table>
       </div>
       <div>
