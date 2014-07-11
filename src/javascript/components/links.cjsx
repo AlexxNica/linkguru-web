@@ -50,7 +50,7 @@ LinksComponent = React.createClass
         </div>
       </div>
       <div>
-        <table className="table">
+        <table className="table links-collection">
           <tr>
             <td>Link</td>
             <td>Description</td>
