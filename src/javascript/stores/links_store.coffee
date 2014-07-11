@@ -25,7 +25,7 @@ LinksStore = Fluxxor.createStore
   onSearchLink: (query) ->
     if query
       @searchResult = _.filter @links, (link) ->
-        link.url.indexOf(query) != -1
+        (link.url?.indexOf(query) != -1) || (link.description?.indexOf(query) != -1)
     else
       @searchResult = null
     @emit("change")
