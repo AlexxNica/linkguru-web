@@ -20,12 +20,17 @@ LinkComponet = React.createClass
       <div class='score'>
         {"#{@props.link.score}"}
       </div>
-      <button class='upVoteButton' onClick={@onUpVote}>UpVote!</button>
+      <button class='upVoteButton' onClick={@onUpVote}>Up!</button>
+      <button class='downVoteButton' onClick={@onDownVote}>Down!</button>
     </a>
 
   onUpVote: (e) ->
     e.preventDefault()
     @getFlux().actions.links.upVote(@props.link)
+
+  onDownVote: (e) ->
+    e.preventDefault()
+    @getFlux().actions.links.downVote(@props.link)
 
 
 
