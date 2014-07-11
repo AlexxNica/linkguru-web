@@ -11,12 +11,10 @@ Application = React.createClass
   mixins: [FluxMixin]
 
   render: ->
-    return (
-      <section className="application-container">
-        <div class="links-container">
-          <LinksComponent/>
-        </div>
-      </section>
-    )
+    <section className="application-container">
+      <div class="links-container">
+        <LinksComponent/>
+      </div>
+    </section>
 
 module.exports = Application

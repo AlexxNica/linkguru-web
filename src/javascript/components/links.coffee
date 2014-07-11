@@ -12,23 +12,41 @@ LinksComponent = React.createClass
 
   getStateFromFlux: ->
     flux = @getFlux()
-    return links: flux.store("LinksStore").getState()
+    links: flux.store("LinksStore").getState()
 
   render: ->
-    return (
-      <section className="application-container">
-        <div>
-          <ul>
-            { @state.links.collection.map((link, i) ->
-              return(
-                <div class="row">
-                  <LinkComponent link={link}/>
-                </div>
-                )
-            )}
-          </ul>
-        </div>
-      </section>
-    )
+    <section className="application-container">
+      <div>
+        <ul>
+          {
+            @state.links.collection.map (link, i) ->
+              <div class="row">
+                <LinkComponent link={link}/>
+              </div>
+          }
+        </ul>
+      </div>
+      <div>
+        <form onSubmit={ @onNewLinkSubmit }>
+          <input type="url"
+                 size="100"
+                 placeholder="New link"
+                 value={ @state.newLinkUrl }
+                 onChange={ @handleLinkUrlChange } />
+          <input type="submit" value="Add Link" />
+        </form>
+      </div>
+    </section>
+
+
+  handleLinkUrlChange: (e) ->
+    @setState(newLinkUrl: e.target.value)
+
+  onNewLinkSubmit: (e) ->
+    e.preventDefault()
+    if (@state.newLinkUrl.trim())
+      debugger
+      @getFlux().actions.links.addLink url: @state.newLinkUrl
+      @setState newLinkUrl: ""
 
 module.exports = LinksComponent

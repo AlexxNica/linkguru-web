@@ -1,1 +1,2 @@
-module.exports = {}
+module.exports =
+  LINKS_ADD: "LINKS_ADD"

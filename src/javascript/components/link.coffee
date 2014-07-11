@@ -13,7 +13,12 @@ LinkComponet = React.createClass
   },
 
   render: ->
-     return <a>{"#{@props.link.url}"}</a>
+    <a>
+      <div class='url'>
+        {"#{@props.link.url}"}
+      </div>
+      <button class='upVoteButton' onClick={@onUpVote}>UpVote!</button>
+    </a>
 
 
 module.exports = LinkComponet
