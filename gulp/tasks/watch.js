@@ -9,7 +9,7 @@ gulp.task('watch', function() {
 	};
 
 	gulp.watch('src/javascript/**', ['browserify']);
-	gulp.watch('src/sass/**', ['compass']);
+	gulp.watch('src/scss/**', ['sass']);
 	gulp.watch('src/images/**', ['images']);
 	gulp.watch(['build/**']).on('change', reload);
 });
