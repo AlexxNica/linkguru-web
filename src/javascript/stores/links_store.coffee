@@ -48,7 +48,7 @@ LinksStore = Fluxxor.createStore
     { loading: @loading, error: @error, collection: @getLinks() }
 
   onLinkAdd: (payload)->
-    @links.push
+    @links.unshift
       url: payload.url
       created_at: Date()
       score: 0
