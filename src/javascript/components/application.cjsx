@@ -14,6 +14,7 @@ Application = React.createClass
     return (
       <section className="application-container">
         <div class="links-container">
+          <LinksComponent/>
         </div>
       </section>
     )
