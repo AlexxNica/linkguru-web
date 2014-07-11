@@ -13,6 +13,7 @@ LinksComponent = React.createClass
 
   getInitialState: ->
     newLinkUrl: ""
+    newDescriptionText: ""
 
   getStateFromFlux: ->
     flux = @getFlux()
@@ -41,15 +42,23 @@ LinksComponent = React.createClass
       </div>
       <div>
         <form onSubmit={ @onNewLinkSubmit }>
-          <div className='form-group'>
+          <div className='col-xs-5 form-group'>
             <input type="url"
                    size="100"
                    placeholder="New link"
                    value={ @state.newLinkUrl }
                    onChange={ @handleLinkUrlChange }
                    className='col-xs-5'/>
-            <input type="submit" value="Add Link" className='btn btn-sm btn-default' />
           </div>
+          <div className='col-xs-5 form-group'>
+            <textarea type="text"
+                      size="300"
+                      placeholder="New link"
+                      value={ @state.newDescriptionText }
+                      onChange={ @handleDescriptionChange }
+                      className='col-xs-5'/>
+          </div>
+          <input type="submit" value="Add Link" className='col-xs-2 btn btn-sm btn-default' />
         </form>
       </div>
     </section>
@@ -58,10 +67,15 @@ LinksComponent = React.createClass
   handleLinkUrlChange: (e) ->
     @setState(newLinkUrl: e.target.value)
 
+  handleDescriptionChange: (e) ->
+    @setState(newDescriptionText: e.target.value)
+
   onNewLinkSubmit: (e) ->
     e.preventDefault()
     if (@state.newLinkUrl.trim())
-      @getFlux().actions.links.addLink url: @state.newLinkUrl
+      @getFlux().actions.links.addLink
+        url: @state.newLinkUrl
+        description: @state.newDescriptionText
       @setState newLinkUrl: ""
 
 module.exports = LinksComponent
