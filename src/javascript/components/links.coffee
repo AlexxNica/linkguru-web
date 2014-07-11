@@ -24,7 +24,7 @@ LinksComponent = React.createClass
         <ul>
           {
             @state.links.collection.map (link, i) ->
-              <div class="row">
+              <div className="row">
                 <LinkComponent link={link}/>
               </div>
           }
