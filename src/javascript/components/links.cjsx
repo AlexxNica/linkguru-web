@@ -22,6 +22,10 @@ LinksComponent = React.createClass
     <section className="application-container">
       <div>
         <table className="table">
+          <tr>
+            <td>Link</td>
+            <td>Vote!</td>
+          </tr>
           {
             @state.links.collection.map (link, i) ->
               <LinkComponent link={link}/>
@@ -35,8 +39,9 @@ LinksComponent = React.createClass
                    size="100"
                    placeholder="New link"
                    value={ @state.newLinkUrl }
-                   onChange={ @handleLinkUrlChange } />
-            <input type="submit" value="Add Link" className='btn btn-default' />
+                   onChange={ @handleLinkUrlChange }
+                   className='col-xs-5'/>
+            <input type="submit" value="Add Link" className='btn btn-sm btn-default' />
           </div>
         </form>
       </div>
