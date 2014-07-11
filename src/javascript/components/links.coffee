@@ -6,7 +6,7 @@ FluxChildMixin = Fluxxor.FluxChildMixin(React)
 StoreWatchMixin = Fluxxor.StoreWatchMixin
 
 
-LinksComponnet = React.createClass
+LinksComponent = React.createClass
   mixins: [FluxChildMixin, StoreWatchMixin("LinksStore")]
 
   getStateFromFlux: ->
@@ -35,4 +35,4 @@ LinksComponnet = React.createClass
       </section>
     )
 
-module.exports = LinksComponnet
+module.exports = LinksComponent
