@@ -13,8 +13,8 @@ Application = React.createClass
 
   render: ->
     <section className="application-container">
-      <Search />
       <div className="container links-container">
+        <Search />
         <LinksComponent/>
       </div>
     </section>
