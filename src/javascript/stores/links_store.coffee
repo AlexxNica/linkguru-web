@@ -52,6 +52,8 @@ LinksStore = Fluxxor.createStore
       url: payload.url
       created_at: Date()
       score: 0
+      downVoted: true
+      upVoted: true
       description: payload.description
 
   onLoadLinks: ->
