@@ -32,12 +32,14 @@ LinksComponent = React.createClass
       </div>
       <div>
         <form onSubmit={ @onNewLinkSubmit }>
-          <input type="url"
-                 size="100"
-                 placeholder="New link"
-                 value={ @state.newLinkUrl }
-                 onChange={ @handleLinkUrlChange } />
-          <input type="submit" value="Add Link" />
+          <div className='form-group'>
+            <input type="url"
+                   size="100"
+                   placeholder="New link"
+                   value={ @state.newLinkUrl }
+                   onChange={ @handleLinkUrlChange } />
+            <input type="submit" value="Add Link" className='btn btn-default' />
+          </div>
         </form>
       </div>
     </section>
