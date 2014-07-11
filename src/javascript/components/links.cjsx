@@ -25,12 +25,36 @@ LinksComponent = React.createClass
   render: ->
     <section className="application-container">
       <div>
+        <div className='row'>
+          <form onSubmit={ @onNewLinkSubmit } className='form-inline'>
+            <div className='form-group'>
+              <input type="url"
+                     size='30'
+                     placeholder="Link url..."
+                     value={ @state.newLinkUrl }
+                     onChange={ @handleLinkUrlChange }
+                     className='form-control'/>
+            </div>
+            <div className='form-group'>
+              <input  type="text"
+                      size='70'
+                      placeholder="Description..."
+                      value={ @state.newDescriptionText }
+                      onChange={ @handleDescriptionChange }
+                      className='form-control'/>
+            </div>
+            <div className='form-group'>
+              <input type="submit" value="Add Link" className='btn btn-sm btn-default' />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div>
         <table className="table">
           <tr>
             <td>Link</td>
             <td>Description</td>
             <td>Vote!</td>
-
           </tr>
           <tbody>
             {
@@ -39,27 +63,6 @@ LinksComponent = React.createClass
             }
           </tbody>
         </table>
-      </div>
-      <div>
-        <form onSubmit={ @onNewLinkSubmit }>
-          <div className='col-xs-5 form-group'>
-            <input type="url"
-                   size="100"
-                   placeholder="New link"
-                   value={ @state.newLinkUrl }
-                   onChange={ @handleLinkUrlChange }
-                   className='col-xs-5'/>
-          </div>
-          <div className='col-xs-5 form-group'>
-            <textarea type="text"
-                      size="300"
-                      placeholder="New link"
-                      value={ @state.newDescriptionText }
-                      onChange={ @handleDescriptionChange }
-                      className='col-xs-5'/>
-          </div>
-          <input type="submit" value="Add Link" className='col-xs-2 btn btn-sm btn-default' />
-        </form>
       </div>
     </section>
 
