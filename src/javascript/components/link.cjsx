@@ -13,17 +13,16 @@ LinkComponet = React.createClass
   },
 
   render: ->
-    <a>
-      <div className='url col-xs-9'>
-        <a href={@props.link.url}>{"#{@props.link.url}"}</a>
-      </div>
-      <div className='col-xs-3'>
-        <span className='label label-info'>{"#{@props.link.score}"}</span>
-
-        <button className='upVoteButton btn btn-success' onClick={@onUpVote} disabled={@props.link.upVoted}>Up!</button>
-        <button className='downVoteButton btn btn-danger' onClick={@onDownVote} disabled={@props.link.downVoted}>Down!</button>
-      </div>
-    </a>
+    <tr>
+      <td className='url col-xs-9'>
+        <a href={"http://#{@props.link.url}"}>{"#{@props.link.url}"}</a>
+      </td>
+      <td className='col-xs-3'>
+        <div className='badge'>{"#{@props.link.score}"}</div>
+        <button className='badge badge-success' onClick={@onUpVote} disabled={@props.link.upVoted}>Up!</button>
+        <button className='badge badge-warning' onClick={@onDownVote} disabled={@props.link.downVoted}>Down!</button>
+      </td>
+    </tr>
 
   onUpVote: (e) ->
     e.preventDefault()
@@ -32,8 +31,5 @@ LinkComponet = React.createClass
   onDownVote: (e) ->
     e.preventDefault()
     @getFlux().actions.links.downVote(@props.link)
-
-
-
 
 module.exports = LinkComponet

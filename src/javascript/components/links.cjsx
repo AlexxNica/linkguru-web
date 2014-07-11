@@ -21,14 +21,12 @@ LinksComponent = React.createClass
   render: ->
     <section className="application-container">
       <div>
-        <ul>
+        <table className="table">
           {
             @state.links.collection.map (link, i) ->
-              <div className="row">
-                <LinkComponent link={link}/>
-              </div>
+              <LinkComponent link={link}/>
           }
-        </ul>
+        </table>
       </div>
       <div>
         <form onSubmit={ @onNewLinkSubmit }>

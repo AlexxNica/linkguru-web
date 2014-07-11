@@ -12,7 +12,7 @@ Application = React.createClass
 
   render: ->
     <section className="application-container">
-      <div className="links-container">
+      <div className="container links-container">
         <LinksComponent/>
       </div>
     </section>
