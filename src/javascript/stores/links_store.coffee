@@ -5,6 +5,7 @@ _ = require("Underscore")
 LinksStore = Fluxxor.createStore
   initialize: (options) ->
     @links =  []
+    @searchQuery = ""
     @searchResult = null
     @loading = false
     @error = null
@@ -23,6 +24,7 @@ LinksStore = Fluxxor.createStore
     @searchResult || @links
 
   onSearchLink: (query) ->
+    @searchQuery = query || ""
     if query
       @searchResult = _.filter @links, (link) ->
         (link.url?.indexOf(query) != -1) || (link.description?.indexOf(query) != -1)
@@ -45,7 +47,7 @@ LinksStore = Fluxxor.createStore
     @emit("change")
 
   getState: ->
-    { loading: @loading, error: @error, collection: @getLinks() }
+    { loading: @loading, error: @error, collection: @getLinks(), query: @searchQuery }
 
   onLinkAdd: (payload)->
     @links.unshift

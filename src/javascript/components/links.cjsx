@@ -58,8 +58,8 @@ LinksComponent = React.createClass
           </tr>
           <tbody>
             {
-              @state.links.collection.map (link, i) ->
-                <LinkComponent key=i link={link}/>
+              @state.links.collection.map (link, i) =>
+                <LinkComponent key=i link={link} query={@state.links.query}/>
             }
           </tbody>
         </table>

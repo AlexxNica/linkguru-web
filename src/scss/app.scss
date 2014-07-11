@@ -36,9 +36,14 @@ body {
   border-width: 0 4px 0 4px;
 }
 
-.new-link-form
+.new-link-form {
   .form-group {
     padding: 0;
     margin-bottom: 10px;
   }
+}
 
+.query-match {
+  text-decoration: underline;
+  font-weight: bold;
+}

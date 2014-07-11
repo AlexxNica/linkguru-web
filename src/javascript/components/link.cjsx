@@ -11,15 +11,21 @@ LinkComponet = React.createClass
   propTypes: {
     link: React.PropTypes.object.isRequired
   },
+  handleQuery: (value) ->
+    query = @props.query
+    if query
+      value.replace(query, "<span class='query-match'>#{query}</span>")
+    else
+      value
 
   render: ->
     <tr>
       <div clasName='row'>
         <td className='url col-xs-4'>
-          <a href={"#{@props.link.url}"}>{"#{@props.link.url}"}</a>
+          <a href={"#{@props.link.url}"} dangerouslySetInnerHTML={{__html: "#{@handleQuery(@props.link.url)}"}} />
         </td>
         <td className='description col-xs-5'>
-          <p>{"#{@props.link.description}"}</p>
+          <p dangerouslySetInnerHTML={{__html: "#{@handleQuery(@props.link.description)}"}} />
         </td>
         <td className='col-xs-3 btn-group'>
           <span className='score pull-left'>{"#{@props.link.score}"}</span>
