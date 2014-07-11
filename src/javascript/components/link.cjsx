@@ -15,7 +15,7 @@ LinkComponet = React.createClass
   render: ->
     <a>
       <div className='url col-xs-9'>
-        {"#{@props.link.url}"}
+        <a href={@props.link.url}>{"#{@props.link.url}"}</a>
       </div>
       <div className='col-xs-3'>
         <span className='label label-info'>{"#{@props.link.score}"}</span>

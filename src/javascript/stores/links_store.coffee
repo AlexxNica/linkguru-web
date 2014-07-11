@@ -12,13 +12,13 @@ LinksStore = Fluxxor.createStore
     )
 
   onUpVoteLink: (link) ->
-    link.score += 1
+    link.score += if link.downVoted then 2 else 1
     link.upVoted = true
     link.downVoted = false
     @emit("change")
 
   onDownVoteLink: (link) ->
-    link.score -= 1
+    link.score -= if link.upVoted then 2 else 1
     link.downVoted = true
     link.upVoted = false
     @emit("change")
