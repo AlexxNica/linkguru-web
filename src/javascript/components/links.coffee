@@ -5,6 +5,7 @@ Fluxxor = require("fluxxor")
 FluxChildMixin = Fluxxor.FluxChildMixin(React)
 StoreWatchMixin = Fluxxor.StoreWatchMixin
 
+LinkComponent = require './link'
 
 LinksComponent = React.createClass
   mixins: [FluxChildMixin, StoreWatchMixin("LinksStore")]
@@ -21,12 +22,7 @@ LinksComponent = React.createClass
             { @state.links.collection.map((link, i) ->
               return(
                 <div class="row">
-                  <li class="col-xs-6">
-                    {link.url}
-                  </li>
-                  <div class="col-xs-6">
-                    {link.created_at}
-                  </div>
+                  <LinkComponent link={link}/>
                 </div>
                 )
             )}
