@@ -14,14 +14,14 @@ LinkComponet = React.createClass
 
   render: ->
     <a>
-      <div class='url'>
+      <div className='url col-xs-3'>
         {"#{@props.link.url}"}
       </div>
-      <div class='score'>
+      <div className='score col=xs=3'>
         {"#{@props.link.score}"}
       </div>
-      <button class='upVoteButton' onClick={@onUpVote}>Up!</button>
-      <button class='downVoteButton' onClick={@onDownVote}>Down!</button>
+      <button className='upVoteButton col-xs-3' onClick={@onUpVote}>Up!</button>
+      <button className='downVoteButton col-xs-3' onClick={@onDownVote}>Down!</button>
     </a>
 
   onUpVote: (e) ->

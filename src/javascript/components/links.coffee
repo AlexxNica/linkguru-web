@@ -49,7 +49,6 @@ LinksComponent = React.createClass
   onNewLinkSubmit: (e) ->
     e.preventDefault()
     if (@state.newLinkUrl.trim())
-      debugger
       @getFlux().actions.links.addLink url: @state.newLinkUrl
       @setState newLinkUrl: ""
 
