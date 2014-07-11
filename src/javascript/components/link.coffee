@@ -17,8 +17,17 @@ LinkComponet = React.createClass
       <div class='url'>
         {"#{@props.link.url}"}
       </div>
+      <div class='score'>
+        {"#{@props.link.score}"}
+      </div>
       <button class='upVoteButton' onClick={@onUpVote}>UpVote!</button>
     </a>
+
+  onUpVote: (e) ->
+    e.preventDefault()
+    @getFlux().actions.links.upVote(@props.link)
+
+
 
 
 module.exports = LinkComponet
