@@ -25,9 +25,9 @@ LinksComponent = React.createClass
   render: ->
     <section className="application-container">
       <div>
-        <div className='row'>
-          <form onSubmit={ @onNewLinkSubmit } className='form-inline'>
-            <div className='form-group'>
+        <div>
+          <form onSubmit={ @onNewLinkSubmit } className='form-inline new-link-form'>
+            <div className='form-group col-xs-4'>
               <input type="url"
                      size='30'
                      placeholder="Link url..."
@@ -35,15 +35,15 @@ LinksComponent = React.createClass
                      onChange={ @handleLinkUrlChange }
                      className='form-control'/>
             </div>
-            <div className='form-group'>
+            <div className='form-group col-xs-6'>
               <input  type="text"
-                      size='70'
+                      size='60'
                       placeholder="Description..."
                       value={ @state.newDescriptionText }
                       onChange={ @handleDescriptionChange }
                       className='form-control'/>
             </div>
-            <div className='form-group'>
+            <div className='form-group col-xs-2'>
               <input type="submit" value="Add Link" className='btn btn-sm btn-default' />
             </div>
           </form>
