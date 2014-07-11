@@ -22,7 +22,7 @@ LinkComponet = React.createClass
           <p>{"#{@props.link.description}"}</p>
         </td>
         <td className='col-xs-3 btn-group'>
-          <span className='label label-info inline pull-left label-big'>{"#{@props.link.score}"}</span>
+          <span className='score pull-left'>{"#{@props.link.score}"}</span>
           <button className='btn btn-sm btn-success' onClick={@onUpVote} disabled={@props.link.upVoted}>Up!</button>
           <button className='btn btn-sm btn-danger' onClick={@onDownVote} disabled={@props.link.downVoted}>Down!</button>
         </td>
