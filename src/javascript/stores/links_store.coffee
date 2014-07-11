@@ -3,7 +3,9 @@ Const = require("../constants")
 
 LinksStore = Fluxxor.createStore
   initialize: (options) ->
-    @links = [{url: 'testurl.com', created_at: 'created_at', score: 1, upVoted: true, downVoted: false}, {url: 'testurl2.com', created_at: 'created_at2', score: 5, upVoted: false, downVoted: true}]
+    @links = [{url: 'www.google.com', created_at: 'created_at', score: 1, upVoted: true, downVoted: false},
+              {url: 'www.google2.com', created_at: 'created_at2', score: 5, upVoted: false, downVoted: true},
+              {url: 'www.google3.com', created_at: 'created_at2', score: 5}]
 
     @bindActions(
       Const.LINKS_UP_VOTE, @onUpVoteLink,
