@@ -46,7 +46,8 @@
     "react": "^0.10.0",
     "superagent-promise": "*",
     "underscore": "^1.6.0",
-    "zepto-browserify": "*"
+    "zepto-browserify": "*",
+    "fuse.js": "*"
   },
   "scripts": {
     "test": "jest"
