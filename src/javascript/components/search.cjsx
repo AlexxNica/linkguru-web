@@ -9,9 +9,9 @@ Search = React.createClass
   mixins: [FluxChildMixin]
 
   render: ->
-    <label className="search">Search:
-      <input name="search-value" onChange={@onChange} />
-    </label>
+    <div className="search-input col-xs-4">
+      <input placeholder="Search..." className="form-control" name="search-value" onChange={@onChange} />
+    </div>
 
   onChange: (e) ->
     value = e.target.value
