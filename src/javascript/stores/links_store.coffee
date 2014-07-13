@@ -1,6 +1,7 @@
 Fluxxor = require("fluxxor")
 Const = require("../constants")
 _ = require("Underscore")
+Fuse = require("fuse.js")
 
 LinksStore = Fluxxor.createStore
   initialize: (options) ->
@@ -25,9 +26,12 @@ LinksStore = Fluxxor.createStore
 
   onSearchLink: (query) ->
     @searchQuery = query || ""
+
     if query
-      @searchResult = _.filter @links, (link) ->
-        (link.url?.indexOf(query) != -1) || (link.description?.indexOf(query) != -1)
+      searchOptions =
+        keys: ['url', 'description']
+      fuse = new Fuse(@links, searchOptions)
+      @searchResult = fuse.search(query)
     else
       @searchResult = null
     @emit("change")
