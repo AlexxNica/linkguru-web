@@ -1,6 +1,6 @@
 # @cjsx React.DOM
 
-React = require("React")
+React = require("react")
 Fluxxor = require("fluxxor")
 FluxChildMixin = Fluxxor.FluxChildMixin(React)
 

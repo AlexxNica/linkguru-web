@@ -1,6 +1,6 @@
 # @cjsx React.DOM
 Fluxxor = require 'fluxxor'
-React = require 'React'
+React = require 'react'
 
 actions = require './actions'
 stores = require './stores'

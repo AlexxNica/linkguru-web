@@ -1,6 +1,6 @@
 Fluxxor = require("fluxxor")
 Const = require("../constants")
-_ = require("Underscore")
+_ = require("underscore")
 Fuse = require("fuse.js")
 
 LinksStore = Fluxxor.createStore
